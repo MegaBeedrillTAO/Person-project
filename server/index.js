@@ -6,7 +6,7 @@ const session = require('express-session');
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 const {login, logout, register,deleteUser} = require('./Controllers/authController');
 const {addCommand, getCommands} = require('./Controllers/commandController');
-const {getSettings, editSettings} = require('./Controllers/settingController');
+const {getSettings, editSettings, createSettings} = require('./Controllers/settingController');
 
 
 app.use(express.json());
@@ -36,6 +36,7 @@ app.get('/command/get', getCommands);
 
 app.get('/settings/get', getSettings);
 app.put('/settings/edit', editSettings);
+app.post('/settings/create', createSettings);
 
 
 app.listen(SERVER_PORT, () =>{

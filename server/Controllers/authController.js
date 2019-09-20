@@ -1,3 +1,6 @@
+const hash = require('bcryptjs');
+
+
 async function login(req, res){
     
 }
