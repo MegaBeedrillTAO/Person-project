@@ -5,7 +5,7 @@ async function login(req, res){
     const {username, password} = req.body;
       const db = req.app.get('db');
 
-      const foundUser = await db.auth.checkForUsername(username);
+      const foundUser = await db.auth.checkForUserName(username);
 
       if (!foundUser[0]) {
          res.status(403).json("Username or Password incorrect")
@@ -21,7 +21,7 @@ async function login(req, res){
             req.session.user = {
                user_id: foundUser[0].user_id,
                username: foundUser[0].username,
-               firstName: foundUser[0].first_name
+               
             };
 
             res.status(200).json(req.session.user);
@@ -38,7 +38,7 @@ async function register(req, res){
     const {username, password} = req.body;
       const db = req.app.get('db');
 
-      const foundUser = await db.auth.checkForUsername(username);
+      const foundUser = await db.auth.checkForUserName(username);
 
       if (foundUser[0]) {
          res.status(409).json("Username Taken")
