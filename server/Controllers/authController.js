@@ -19,15 +19,15 @@ async function login(req, res){
          } else {
 
             const userSettings = await db.setting.getSettings(foundUser[0].user_id);
-
+            console.log(userSettings[0].name);
             req.session.user = {
                user_id: foundUser[0].user_id,
                username: foundUser[0].username,
                
             };
 
-            req.session.settings ={
-               name: userSettings[0].username,
+            req.session.settings = {
+               name: userSettings[0].name,
                background_color: userSettings[0].background_color,
                container_color: userSettings[0].container_color,
                chat_bubble_color: userSettings[0].chat_bubble_color,
@@ -36,7 +36,7 @@ async function login(req, res){
             }
 
 
-            res.status(200).json(req.session.user);
+            res.status(200).json([req.session.user, req.session.settings]);
          }
       }
 }
