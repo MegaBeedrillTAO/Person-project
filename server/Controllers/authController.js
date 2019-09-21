@@ -12,7 +12,7 @@ async function login(req, res){
       } 
       else {
 
-         const isAuthenticated = bcrypt.compareSync(password, foundUser[0].hash)
+         const isAuthenticated = bcrypt.compareSync(password, foundUser[0].password)
 
          if (!isAuthenticated) {
             res.status(403).json("Username or Password incorrect")
@@ -60,7 +60,12 @@ async function register(req, res){
 }
 
 async function deleteUser(req, res){
-    
+    const {id} = req.session.user.id;
+    console.log(id);
+    const db = req.app.get('db');
+    await db.auth.deleteUser(id);
+    req.session.destroy();
+    res.sendStatus(200);
 }
 
 module.exports = {
