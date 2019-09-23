@@ -1,6 +1,9 @@
-.header{
+@mixin headerVal {
     width: 100vw;
     height: 10%;
+}
+
+.header{
     background-color: $backgroundColor;
     display: flex;
     justify-content: center;
@@ -8,4 +11,13 @@
     position: fixed;
     top: 0px;
     @include borderStyle();
+    @include headerVal();
+    section{
+        @include flexStuff(center, row);
+        @include headerVal();
+    }
+    main{
+        @include flexStuff(center, row);
+        @include headerVal(); 
+    }
 }

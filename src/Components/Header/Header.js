@@ -5,42 +5,29 @@ import {logoutUser} from '../../Ducks/Reducers/userReducer';
 import {changePage} from '../../Ducks/Reducers/appReducer';
 
 export class Header extends Component {
-    constructor(){
-        super();
-        this.state ={
-
-        }
-    }
-    
     goToSettings = () =>{
         this.props.changePage('/Settings');
-        return <Redirect to='/Settings'/>
     }
 
     goToMain = () => {
         this.props.changePage('/Main');
-        // <Redirect to='/Main'/>
     }
 
     logout = () =>{
         this.props.changePage('/');
         this.props.logoutUser();
-        //return <Redirect to='/'/>
     }
     
     render() { 
-        // if (this.props.page === '/Settings'){
-        //     return <Redirect to='/Settings'/>
-        // }
-        // console.log('hit')
-
         
-
-
         return (
             <div className='header'>
                 {this.props.page === '/Settings' 
-                ? <Redirect to='/Settings' />
+                ? <><Redirect to='/Settings' /></> :
+                this.props.page === '/' 
+                ? <><Redirect to='/' /></> :
+                this.props.page === '/Main' 
+                ? <><Redirect to='/Main' /></>
                 : null}
                 {
                     this.props.page === '/' ? 

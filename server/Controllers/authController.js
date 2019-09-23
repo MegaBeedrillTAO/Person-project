@@ -83,7 +83,7 @@ async function register(req, res){
 
 async function deleteUser(req, res){
     const {user_id} = req.session.user;
-    console.log(user_id);
+    
     const db = req.app.get('db');
     await db.auth.deleteUser(user_id);
     req.session.destroy();

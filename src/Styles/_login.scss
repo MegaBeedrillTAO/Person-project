@@ -1,16 +1,11 @@
-@mixin flexStuff($justify) {
-    display: flex;
-    flex-direction: column;
-    justify-content: $justify;
-    align-items: center; 
-}
+
 .login{
     height: 60vh;
     width: 100vw;
     background-color: $backgroundColor;
     @include borderStyle();
-    @include flexStuff(space-evenly);
+    @include flexStuff(space-evenly, column);
     section{
-        @include flexStuff(center); 
+        @include flexStuff(center, column); 
     }
 }
