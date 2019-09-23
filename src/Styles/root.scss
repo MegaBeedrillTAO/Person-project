@@ -1,5 +1,16 @@
+$backgroundColor: rgb(47, 218, 218);
+@mixin borderStyle {
+    border: solid black 3px;
+    box-sizing: border-box;
+}
 .App{
     width: 100vw;
     height: 100vh;
-   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    @include borderStyle();
 }
+@import './header';
+@import './login';

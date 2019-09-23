@@ -1,0 +1,6 @@
+.login{
+    height: 60vh;
+    width: 100vw;
+    background-color: $backgroundColor;
+    @include borderStyle();
+}

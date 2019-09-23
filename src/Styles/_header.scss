@@ -1,0 +1,11 @@
+.header{
+    width: 100vw;
+    height: 10%;
+    background-color: $backgroundColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    @include borderStyle();
+}

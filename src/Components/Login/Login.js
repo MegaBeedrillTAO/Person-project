@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-function Login(){
-    return(
-        <div>
-
-        </div>
-    )
+export class Login extends Component {
+    render() {
+        return (
+            <div className = 'login'>
+                
+            </div>
+        )
+    }
 }
-export default Login;
+
+const mapStateToProps = (state) => ({
+    
+})
+
+
+
+export default connect(mapStateToProps)(Login)
