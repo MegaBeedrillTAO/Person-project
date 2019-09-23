@@ -8,6 +8,6 @@ export default (
     <Switch>
         <Route component={Login} exact path='/'/>
         <Route component={MainView}  path='/Main'/>
-        <Route component={Settings} exact path='/Settings'/>
+        <Route component={Settings}  path='/Settings'/>
     </Switch>
 )
