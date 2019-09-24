@@ -18,25 +18,18 @@ async function login(req, res){
             res.status(403).json("Username or Password incorrect")
          } else {
 
-            const userSettings = await db.setting.getSettings(foundUser[0].user_id);
-            console.log(userSettings[0].name);
+            
+            
             req.session.user = {
                user_id: foundUser[0].user_id,
                username: foundUser[0].username,
                
             };
 
-            req.session.settings = {
-               name: userSettings[0].name,
-               background_color: userSettings[0].background_color,
-               container_color: userSettings[0].container_color,
-               chat_bubble_color: userSettings[0].chat_bubble_color,
-               language: userSettings[0].language,
-               user_id: foundUser[0].user_id
-            }
+            console.log(req.session);
 
 
-            res.status(200).json([req.session.user, req.session.settings]);
+            res.status(200).json(req.session.user);
          }
       }
 }
@@ -61,23 +54,16 @@ async function register(req, res){
 
          const newUser = await db.auth.registerUser(username, hash);
          
-         const newSettings = await db.setting.createSettings(username, newUser[0].user_id);
+         
          req.session.user = {
             user_id: newUser[0].user_id,
             username: newUser[0].username,
             
          };
+         
+         
 
-         req.session.settings ={
-            name: newUser[0].username,
-            background_color: newSettings[0].background_color,
-            container_color: newSettings[0].container_color,
-            chat_bubble_color: newSettings[0].chat_bubble_color,
-            language: newSettings[0].language,
-            user_id: newUser[0].user_id
-         }
-
-         res.status(200).json([req.session.user, req.session.settings]);
+         res.status(200).json(req.session.user);
       }
 }
 

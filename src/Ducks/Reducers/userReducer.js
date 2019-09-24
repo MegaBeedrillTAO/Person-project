@@ -35,18 +35,24 @@ export function logoutUser() {
 
 export default function reducer(state = initialState, action){
     const {type, payload} = action;
+
+    
+
     switch(type){
         case `${REGISTER_USER}_FULFILLED`:
          return {
             ...state,
-            user_id: payload.data[0].user_id,
-            username: payload.data[0].username
+            user_id: payload.data.user_id,
+            username: payload.data.username,
+           
          };
          case `${LOGIN_USER}_FULFILLED`:
+            
          return {
             ...state,
-            user_id: payload.data[0].user_id,
-            username: payload.data[0].username
+            user_id: payload.data.user_id,
+            username: payload.data.username,
+            
          };
          case LOGOUT_USER:
          return {

@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 
-function MainView(){
-    return(
-        <div>
 
-        </div>
-    )
+export class MainView extends Component {
+    componentDidMount(){
+        
+    }
+    render() {
+        
+        console.log(this.props.userSettings)
+
+        return (
+            <div>
+                MainView
+                {this.props.name}
+            </div>
+        )
+    }
 }
-export default MainView;
+
+const mapStateToProps = (reduxState) => {
+    return {
+        
+        name:  reduxState.settingsReducer.name
+    }
+};
+
+export default connect(mapStateToProps,{
+    getSettings
+})(MainView)

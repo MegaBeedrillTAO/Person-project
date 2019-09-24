@@ -6,7 +6,7 @@ const session = require('express-session');
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 const {login, logout, register,deleteUser} = require('./Controllers/authController');
 const {addCommand} = require('./Controllers/commandController');
-const {editSettings} = require('./Controllers/settingController');
+const {editSettings, getSettings} = require('./Controllers/settingController');
 
 
 app.use(express.json());
@@ -34,7 +34,7 @@ app.delete('/auth/delete', deleteUser);
 app.post('/command/add', addCommand);
 
 
-
+app.get('/settings/get', getSettings);
 app.put('/settings/edit', editSettings);
 
 

@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import {loginUser, registerUser} from '../../Ducks/Reducers/userReducer.js';
 import {changePage} from '../../Ducks/Reducers/appReducer';
 
+
 export class Login extends Component {
     constructor(){
         super();
@@ -27,6 +28,7 @@ export class Login extends Component {
     handleRegister = () => {
         const{username, password} = this.state;
         this.props.registerUser({username, password});
+        this.props.changePage('/Main');
     }
     
     render() {
@@ -53,7 +55,7 @@ export class Login extends Component {
 }
 
 const mapStateToProps = (reduxState) => ({
-    user_id: reduxState.userReducer.user_id,
+    user_id: reduxState.userReducer.user_id
     
 })
 

@@ -14,8 +14,25 @@ async function editSettings(req, res){
     res.status(200).json(req.session.settings);
 }
 
+async function getSettings(req, res){
+    const db = req.app.get('db');
+   // console.log(req.session);
+    const{user_id} = req.session.user;
+    const userSettings = await db.setting.getSettings(user_id);
+    req.session.settings = {
+        name: userSettings[0].name,
+        background_color: userSettings[0].background_color,
+        container_color: userSettings[0].container_color,
+        chat_bubble_color: userSettings[0].chat_bubble_color,
+        language: userSettings[0].language,
+        user_id: user_id
+     }
+     res.status(200).json(req.session.settings);
+}
+
 
 
 module.exports = {
-    editSettings
+    editSettings,
+    getSettings
 }
