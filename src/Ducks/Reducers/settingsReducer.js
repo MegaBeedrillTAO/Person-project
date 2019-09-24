@@ -23,15 +23,15 @@ export default function reducer(state = initialState, action){
     const {type, payload} = action;
     switch(type){
         
-        case GET_SETTINGS:
-                console.log(payload)
+        case `${GET_SETTINGS}_FULFILLED`:
+                
             return{
                 
-                name: payload.name,
-                background_color: payload.background_color,
-                container_color: payload.container_color,
-                chat_bubble_color: payload.chat_bubble_color,
-                language: payload.language
+                name: payload.data.name,
+                background_color: payload.data.background_color,
+                container_color: payload.data.container_color,
+                chat_bubble_color: payload.data.chat_bubble_color,
+                language: payload.data.language
             }
 
 

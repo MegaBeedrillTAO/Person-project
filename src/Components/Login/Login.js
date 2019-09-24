@@ -23,7 +23,6 @@ export class Login extends Component {
     handleLogin = () => {
         const{username, password} = this.state;
         this.props.loginUser({username, password});
-        //this.props.getSettings();
         this.props.changePage('/Main');
     }
 
@@ -34,7 +33,7 @@ export class Login extends Component {
     }
     
     render() {
-        if(this.props.user_id){
+        if(this.props.user_id && this.props.showRedirect){
            return <Redirect to='/Main'/>
         }
         return (
@@ -57,8 +56,8 @@ export class Login extends Component {
 }
 
 const mapStateToProps = (reduxState) => ({
-    user_id: reduxState.userReducer.user_id
-    
+    user_id: reduxState.userReducer.user_id,
+    showRedirect: reduxState.userReducer.showRedirect
 })
 
 

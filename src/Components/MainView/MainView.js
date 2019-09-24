@@ -5,17 +5,28 @@ import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 
 
 export class MainView extends Component {
-    componentDidMount(){
-        
+    constructor(){
+        super();
+        this.state = {
+            userCommands: [],
+            replies: [`Hello ${this.props.name}, type '!commands' to see a list of commands.`]
+        }
     }
     render() {
+        if(this.props.showRedirect) {
+            this.props.getSettings();
+        }
         
-        console.log(this.props.name)
 
         return (
-            <div>
-                MainView
-                {this.props.name}
+            
+            <div className='mainView'>
+               <main>
+                    <section>
+
+                    </section>
+               </main>
+                
             </div>
         )
     }
@@ -23,7 +34,7 @@ export class MainView extends Component {
 
 const mapStateToProps = (reduxState) => {
     return {
-        
+        showRedirect: reduxState.userReducer.showRedirect,
         name:  reduxState.settingsReducer.name
     }
 };

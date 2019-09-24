@@ -16,7 +16,6 @@ async function editSettings(req, res){
 
 async function getSettings(req, res){
     const db = req.app.get('db');
-   // console.log(req.session);
     const{user_id} = req.session.user;
     const userSettings = await db.setting.getSettings(user_id);
     req.session.settings = {
