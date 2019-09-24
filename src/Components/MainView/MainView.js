@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 import Commands from './Posts/Commands';
-import Replies from './Posts/Replies';
+
 
 
 
@@ -10,7 +10,7 @@ export class MainView extends Component {
     constructor(){
         super();
         this.state = {
-            userCommands: [],
+            posts: [],
             replies: [],
             builtInCommands: ['!commands', '!joke', '!weather'],
             input: ''
@@ -22,23 +22,43 @@ export class MainView extends Component {
             input: e.target.value
         })
     }
+    submitCommand = () => {
+        this.setState({
+            posts: [...this.state.posts,
+                {content: this.state.input,
+                type: 'command'}
+            ]
+        })
+            
+        
+        
+    }
 
     render() {
         if(this.props.showRedirect) {
             this.props.getSettings();
         }
         
-
+        const content = this.state.posts.map((el, i) => (
+            <Commands
+                key={i}
+                content={el.content}
+                color= {this.props.chat_bubble_color}
+                type={el.type}
+            />
+            
+        ))
+        
         return (
 
             <div className='mainView'>
                <main>
                     <section className='display' style={{border: `20px ${this.props.container_color} solid`, backgroundColor: `${this.props.background_color}` }} >
-
+                        {content}
                     </section>
                     <section className='inputArea'>
                         <input onChange={this.handleInput}/>
-                        <button>Submit</button>
+                        <button onClick={this.submitCommand}>Submit</button>
                     </section>
                </main>
                 

@@ -175,4 +175,11 @@
 .mainView .inputArea input {
   width: 80%;
 }
+
+.command {
+  height: 40px;
+  width: 100px;
+  border: black 5px solid;
+  border-radius: 20px;
+}
 /*# sourceMappingURL=root.css.map */
