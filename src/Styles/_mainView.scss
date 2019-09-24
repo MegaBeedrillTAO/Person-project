@@ -1,0 +1,20 @@
+.mainView{
+    @include flexStuff(center, column);
+    width: 100vw;
+    height: 100vh;
+    .display{
+        @include flexStuff(center, column); 
+        box-sizing: border-box;
+        height: 60vh;
+        width: 100vw;
+    }
+    .inputArea{
+        @include flexStuff(center, row);
+        button{
+            border-radius: 20px;
+        }
+        input{
+            width: 80%;
+        }
+    }
+}

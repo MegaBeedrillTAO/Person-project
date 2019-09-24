@@ -17,6 +17,13 @@ $backgroundColor: rgb(47, 218, 218);
     align-items: center;
     background-color: grey;
     @include borderStyle();
+    button{
+        &:hover{
+            cursor: pointer;
+            
+        }
+    }
 }
 @import './header';
 @import './login';
+@import './mainView';
