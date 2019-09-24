@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 
 
+
 export class MainView extends Component {
     componentDidMount(){
         
