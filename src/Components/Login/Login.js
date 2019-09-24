@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {loginUser, registerUser} from '../../Ducks/Reducers/userReducer.js';
 import {changePage} from '../../Ducks/Reducers/appReducer';
+import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 
 
 export class Login extends Component {
@@ -22,6 +23,7 @@ export class Login extends Component {
     handleLogin = () => {
         const{username, password} = this.state;
         this.props.loginUser({username, password});
+        //this.props.getSettings();
         this.props.changePage('/Main');
     }
 
@@ -64,5 +66,6 @@ const mapStateToProps = (reduxState) => ({
 export default connect(mapStateToProps,{
     loginUser,
     registerUser,
-    changePage
+    changePage,
+    getSettings
 })(Login)

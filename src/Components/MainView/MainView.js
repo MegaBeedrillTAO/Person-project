@@ -9,7 +9,7 @@ export class MainView extends Component {
     }
     render() {
         
-        console.log(this.props.userSettings)
+        console.log(this.props.name)
 
         return (
             <div>
