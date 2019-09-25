@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {editSettings} from '../../Ducks/Reducers/settingsReducer';
 import EditFields from '../MainView/Posts/EditFields';
 
+
 export class Settings extends Component {
     constructor(){
         super();
@@ -16,9 +17,15 @@ export class Settings extends Component {
     }
     
     handleName =(e) =>{
-        this.setState({name: e.target.value})
+        if (e.target.value === ''){
+            this.setState({name: this.props.name})
+        }
+        else{
+            this.setState({name: e.target.value})
+        }
         
     }
+
     handleBackgroundColor =e =>{
         if (this.checkColor(e.target.value.toLowerCase())){
             this.setState({background_color: e.target.value.toLowerCase()})
@@ -27,6 +34,7 @@ export class Settings extends Component {
             this.setState({background_color: this.props.background_color})
         }
     }
+
     handleContainerColor = e => {
         if (this.checkColor(e.target.value.toLowerCase())){
             this.setState({container_color: e.target.value.toLowerCase()})
@@ -35,6 +43,7 @@ export class Settings extends Component {
             this.setState({container_color: this.props.container_color})
         }
     }
+
     handleChatColor = e =>{
         if (this.checkColor(e.target.value.toLowerCase())){
             this.setState({chat_bubble_color: e.target.value.toLowerCase()})
@@ -43,14 +52,34 @@ export class Settings extends Component {
             this.setState({chat_bubble_color: this.props.chat_bubble_color})
         }
     }
+
     handleLanguage = e => {
-        this.setState({language: e.target.value})
+        if (e.target.value === ''){
+            this.setState({language: this.props.language})
+        }
+        else{
+            this.setState({language: e.target.value})
+        }
     }
+
     checkColor = color => {
         let s = new Option().style;
         s.color = color;
         return s.color === color;
     }
+
+    saveChanges = () =>{
+        const {name, background_color, container_color, chat_bubble_color, language} = this.state;
+        this.props.editSettings({
+            name,
+            background_color,
+            container_color,
+            chat_bubble_color,
+            language,
+            user_id: this.props.user_id
+        })
+    }
+
     render() {
         return (
             <div className='settings'>
@@ -62,6 +91,19 @@ export class Settings extends Component {
                 function={this.handleBackgroundColor}
                 content={'Background Color:'}
                 />
+                <EditFields
+                function={this.handleContainerColor}
+                content={'Container Color:'}
+                />
+                <EditFields
+                function={this.handleChatColor}
+                content={'Chat Bubble Color:'}
+                />
+                <EditFields
+                function={this.handleLanguage}
+                content={'Language:'}
+                />
+                <button onClick={this.saveChanges}>Save</button>
             </div>
         )
     }

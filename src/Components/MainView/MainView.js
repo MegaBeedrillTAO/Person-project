@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 import Commands from './Posts/Commands';
 import builtIn from '../builtInCommands';
+import textToSpeech from './textToSpeech';
 
 
 
@@ -12,8 +13,7 @@ export class MainView extends Component {
         this.state = {
             posts: [],
             reply: '',
-            input: '',
-            wait: false
+            input: ''
         }
     }
 
@@ -37,6 +37,7 @@ export class MainView extends Component {
         //if (this.state.wait){
        for (let i = 0; i < builtIn.length; i++){
            if (this.state.input === builtIn[i].commandCode){
+               textToSpeech(builtIn[i].content);
                this.setState({
                    // reply: builtIn[i].content,
                     posts: [...this.state.posts,
@@ -51,7 +52,7 @@ export class MainView extends Component {
            }
            
        }
-       
+        textToSpeech("You stink dude");
         this.setState({
             //reply: "I don't know that command",
             posts: [...this.state.posts,
