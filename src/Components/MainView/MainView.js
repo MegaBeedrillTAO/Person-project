@@ -37,7 +37,14 @@ export class MainView extends Component {
         //if (this.state.wait){
        for (let i = 0; i < builtIn.length; i++){
            if (this.state.input === builtIn[i].commandCode){
-               textToSpeech(builtIn[i].content);
+               if (this.state.input === '!hello'){
+                let greeting = builtIn[i].content + this.props.name
+                textToSpeech(greeting);
+               }
+               else{
+                textToSpeech(builtIn[i].content);
+               }
+               
                this.setState({
                    // reply: builtIn[i].content,
                     posts: [...this.state.posts,
@@ -47,12 +54,12 @@ export class MainView extends Component {
                     input: '',
                     wait: false
                 })
-                console.log(this.state.posts);
+                
                 return;
            }
            
        }
-        textToSpeech("You stink dude");
+        textToSpeech("I don't know that command");
         this.setState({
             //reply: "I don't know that command",
             posts: [...this.state.posts,

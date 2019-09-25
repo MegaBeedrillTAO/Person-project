@@ -1,7 +1,7 @@
 const builtIn = [
     {
         commandCode: '!commands',
-        content: 'Type !joke to hear a joke. Type !weather to see the current weather.'
+        content: '!joke, !weather, !hello, !introduce'
     },
     {
         commandCode: '!joke',
@@ -10,6 +10,14 @@ const builtIn = [
     {
         commandCode: '!weather',
         content: 'Look outside.'
+    },
+    {
+        commandCode: '!hello',
+        content: 'Hello there '
+    },
+    {
+        commandCode: '!introduce',
+        content: 'My name is Devvie it\'s short for Dev Mountain Personal Assistant.'
     }
 ]
 

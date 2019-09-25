@@ -10,7 +10,7 @@ export default function Speak(text){
     var utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = voice;
     utterance.pitch = 1.5;
-    utterance.rate = 1.25;
+    utterance.rate = 1;
     utterance.volume = 0.8;
     synthesis.speak(utterance);
 

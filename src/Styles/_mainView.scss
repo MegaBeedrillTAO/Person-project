@@ -11,6 +11,7 @@
         flex-direction: column;
         justify-content: flex-end;
         overflow-y: scroll;
+        
     }
     .inputArea{
         @include flexStuff(center, row);
