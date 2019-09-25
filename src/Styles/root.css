@@ -189,7 +189,8 @@
 }
 
 .reply {
-  height: 10%;
+  width: 200px;
+  padding: 4px;
   border: black 5px solid;
   border-radius: 20px;
   -ms-flex-item-align: start;

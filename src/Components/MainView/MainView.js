@@ -12,7 +12,8 @@ export class MainView extends Component {
         this.state = {
             posts: [],
             reply: '',
-            input: ''
+            input: '',
+            wait: false
         }
     }
 
@@ -26,21 +27,24 @@ export class MainView extends Component {
             posts: [...this.state.posts,
                 {content: this.state.input,
                 type: 'command'}
-            ]
-        })
-        this.createReply();
+            ],
+            wait: true
+        }, this.createReply)
+        
     }
 
-    createReply = () => {
+     createReply = () => {
+        //if (this.state.wait){
        for (let i = 0; i < builtIn.length; i++){
            if (this.state.input === builtIn[i].commandCode){
                this.setState({
-                    reply: builtIn[i].content,
+                   // reply: builtIn[i].content,
                     posts: [...this.state.posts,
-                        {content: this.state.reply,
+                        {content: builtIn[i].content,
                         type: 'reply'}
                     ],
-                    input: ''
+                    input: '',
+                    wait: false
                 })
                 console.log(this.state.posts);
                 return;
@@ -49,22 +53,23 @@ export class MainView extends Component {
        }
        
         this.setState({
-            reply: "I don't know that command",
+            //reply: "I don't know that command",
             posts: [...this.state.posts,
-                {content: this.state.reply,
+                {content: "I don't know that command",
                 type: 'reply'}
             ],
-            input: ''
+            input: '',
+            wait: false
         })
         console.log(this.state.posts);
-
+        //}
     }
 
     render() {
         if(this.props.showRedirect) {
             this.props.getSettings();
         }
-        
+         
         const content = this.state.posts.map((el, i) => (
             <Commands
                 key={i}
@@ -85,6 +90,7 @@ export class MainView extends Component {
                     <section className='inputArea'>
                         <input onChange={this.handleInput} value={this.state.input}/>
                         <button onClick={this.submitCommand}>Submit</button>
+                        
                     </section>
                </main>
                 
