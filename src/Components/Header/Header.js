@@ -37,7 +37,7 @@ export class Header extends Component {
                     <section><button onClick={this.logout}>Logout</button> <h2>Assistant</h2> <button onClick={this.goToSettings}>&#9881;</button></section> :
                     
                     this.props.page === '/Settings' ? 
-                    <main><h2>Assistant</h2> <button onClick={this.goToMain}>&#8592;</button> </main> : 
+                    <main> <button onClick={this.goToMain}>&#8592;</button><h2>Assistant</h2>  </main> : 
                     null
         
                 }
