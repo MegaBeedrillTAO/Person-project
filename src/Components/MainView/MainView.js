@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 import Commands from './Posts/Commands';
-
+import builtIn from '../builtInCommands';
 
 
 
@@ -11,8 +11,7 @@ export class MainView extends Component {
         super();
         this.state = {
             posts: [],
-            replies: [],
-            builtInCommands: ['!commands', '!joke', '!weather'],
+            reply: '',
             input: ''
         }
     }
@@ -29,9 +28,36 @@ export class MainView extends Component {
                 type: 'command'}
             ]
         })
-            
-        
-        
+        this.createReply();
+    }
+
+    createReply = () => {
+       for (let i = 0; i < builtIn.length; i++){
+           if (this.state.input === builtIn[i].commandCode){
+               this.setState({
+                    reply: builtIn[i].content,
+                    posts: [...this.state.posts,
+                        {content: this.state.reply,
+                        type: 'reply'}
+                    ],
+                    input: ''
+                })
+                console.log(this.state.posts);
+                return;
+           }
+           
+       }
+       
+        this.setState({
+            reply: "I don't know that command",
+            posts: [...this.state.posts,
+                {content: this.state.reply,
+                type: 'reply'}
+            ],
+            input: ''
+        })
+        console.log(this.state.posts);
+
     }
 
     render() {
@@ -57,7 +83,7 @@ export class MainView extends Component {
                         {content}
                     </section>
                     <section className='inputArea'>
-                        <input onChange={this.handleInput}/>
+                        <input onChange={this.handleInput} value={this.state.input}/>
                         <button onClick={this.submitCommand}>Submit</button>
                     </section>
                </main>
