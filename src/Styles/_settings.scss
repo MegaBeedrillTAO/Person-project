@@ -1,0 +1,7 @@
+.settings{
+    width: 100vw;
+    height: 100vh;
+    @include flexStuff(flex-start, column);
+    margin-top: 200px;
+    align-items: flex-start;
+}
