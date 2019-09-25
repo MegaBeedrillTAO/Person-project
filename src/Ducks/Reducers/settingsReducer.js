@@ -10,6 +10,7 @@ const initialState = {
 }
 
 const GET_SETTINGS = 'GET_SETTINGS';
+const EDIT_SETTINGS = 'EDIT_SETTINGS';
 
 export function getSettings(){
     return {
@@ -18,6 +19,12 @@ export function getSettings(){
     }
 }
 
+export function editSettings(settings){
+    return{
+        type: EDIT_SETTINGS,
+        payload: Axios.put('settings/edit', settings)
+    }
+}
 
 export default function reducer(state = initialState, action){
     const {type, payload} = action;
@@ -32,8 +39,16 @@ export default function reducer(state = initialState, action){
                 container_color: payload.data.container_color,
                 chat_bubble_color: payload.data.chat_bubble_color,
                 language: payload.data.language
+            };
+        case `${EDIT_SETTINGS}_FULFILLED`:
+            return{
+                name: payload.data.name,
+                background_color: payload.data.background_color,
+                container_color: payload.data.container_color,
+                chat_bubble_color: payload.data.chat_bubble_color,
+                language: payload.data.language
             }
-
+        
 
         default: return state;
     }
