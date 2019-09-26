@@ -3,10 +3,11 @@ const express = require('express');
 const app = express();
 const massive = require('massive');
 const session = require('express-session');
-const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
+const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, API_KEY} = process.env;
 const {login, logout, register,deleteUser} = require('./Controllers/authController');
 const {addCommand} = require('./Controllers/commandController');
 const {editSettings, getSettings} = require('./Controllers/settingController');
+const {translateText} = require('./Controllers/translate');
 
 
 app.use(express.json());
@@ -37,7 +38,7 @@ app.post('/command/add', addCommand);
 app.get('/settings/get', getSettings);
 app.put('/settings/edit', editSettings);
 
-
+app.post(`/translate`, translateText);
 
 app.listen(SERVER_PORT, () =>{
     console.log(`Listening on port ${SERVER_PORT}`);

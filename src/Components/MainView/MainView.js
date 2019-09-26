@@ -4,6 +4,7 @@ import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 import Commands from './Posts/Commands';
 import builtIn from '../builtInCommands';
 import textToSpeech from './textToSpeech';
+import Axios from 'axios';
 
 
 
@@ -42,13 +43,19 @@ export class MainView extends Component {
                 textToSpeech(greeting);
                }
                else{
-                textToSpeech(builtIn[i].content);
+                textToSpeech(Axios.post('/translate', {
+                    text: builtIn[i].content,
+                    target: this.props.language
+                }).then(response => {return response.data}));
                }
                
                this.setState({
                    // reply: builtIn[i].content,
                     posts: [...this.state.posts,
-                        {content: builtIn[i].content,
+                        {content: Axios.post('/translate', {
+                            text: builtIn[i].content,
+                            target: this.props.language
+                        }).then(response => {return response.data}),
                         type: 'reply'}
                     ],
                     input: '',
