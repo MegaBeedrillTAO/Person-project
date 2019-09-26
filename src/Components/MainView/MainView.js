@@ -69,7 +69,7 @@ export class MainView extends Component {
             input: '',
             wait: false
         })
-        console.log(this.state.posts);
+        
         //}
     }
 
