@@ -17,6 +17,16 @@ export class Settings extends Component {
             confirmation: false
         }
     }
+
+    componentDidMount(){
+        this.setState({
+            name: this.props.name,
+            background_color: this.props.background_color,
+            container_color: this.props.container_color,
+            chat_bubble_color: this.props.chat_bubble_color,
+            language: this.props.language
+        })
+    }
     
     handleName =(e) =>{
         if (e.target.value === ''){

@@ -60,7 +60,7 @@ async function register(req, res){
             username: newUser[0].username,
             
          };
-         
+         await db.setting.createSettings(newUser[0].username, newUser[0].user_id);
          
 
          res.status(200).json(req.session.user);

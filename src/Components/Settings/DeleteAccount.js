@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {deleteUser} from '../../Ducks/Reducers/userReducer';
+import {changePage} from '../../Ducks/Reducers/appReducer';
 
 export class DeleteAccount extends Component {
     runDelete = () =>{
-        deleteUser();
-        this.props.page = '/';
+        this.props.deleteUser();
+        this.props.changePage('/');
     }
     render() {
         return (
@@ -14,7 +15,7 @@ export class DeleteAccount extends Component {
                     Are you sure you want to delete your account?
                 </main>
                 <section>
-                    <button>Yes</button>
+                    <button onClick={this.runDelete}>Yes</button>
                     <button onClick={this.props.toggle}>No</button>
                 </section>
             </div>
@@ -27,7 +28,8 @@ const mapStateToProps = (reduxState) => ({
 })
 
 const mapDispatchToProps = {
-    deleteUser
+    deleteUser,
+    changePage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeleteAccount)
