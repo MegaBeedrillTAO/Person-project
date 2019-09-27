@@ -78,9 +78,7 @@ export class MainView extends Component {
         
        
     }
-    componentDidMount(){
-        console.log(joker().then(res => res.data))
-    }
+    
     render() {
         
         if(this.props.showRedirect) {

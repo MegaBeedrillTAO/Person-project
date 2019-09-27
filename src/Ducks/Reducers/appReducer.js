@@ -2,7 +2,8 @@
 
 const initialState = {
     currentPage: '/',
-    userCommands: []
+    userCommands: [],
+    joke: ''
 }
 
 const CHANGE_PAGE = 'CHANGE_PAGE';
