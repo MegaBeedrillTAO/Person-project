@@ -3,13 +3,13 @@ import Axios from 'axios'
 
 export default  function EditFields(props) {
    
-    async function getLang(){
-        const langs =   await Axios.get('/languages').then(response => response.data);
-        console.log(langs)
-        langs.map((lang,i) => (
-            <option key={i} value={lang.code} >{lang.name} </option>
-           ))
-    }
+   let langs = [{name: '', code: ''}]
+   async function getLang(){
+       langs = await Axios.get('/languages').then(response => response.data);
+
+   }
+   getLang();
+        
      
     return (
         <div className='editFields'>
@@ -23,9 +23,11 @@ export default  function EditFields(props) {
             <option>
                 Select a language
             </option>
-            <>
-            {getLang()}
-            </>
+            
+            {langs.map((lang,i) => (
+            <option key={i} value={lang.code} >{lang.name} </option>
+           ))}
+            
             </select>
              :
             null

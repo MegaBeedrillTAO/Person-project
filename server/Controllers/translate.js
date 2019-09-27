@@ -17,7 +17,7 @@ module.exports = {
         res.status(200).json(translation);
     },
     getSupportedLang: async (req, res) => {
-        const [lang] = await translate.getLanguages();
+        const lang = await translate.getLanguages();
         res.status(200).json(lang);
     }
 }
