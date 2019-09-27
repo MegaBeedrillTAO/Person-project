@@ -7,7 +7,7 @@ const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, API_KEY} = process.env;
 const {login, logout, register,deleteUser} = require('./Controllers/authController');
 const {addCommand} = require('./Controllers/commandController');
 const {editSettings, getSettings} = require('./Controllers/settingController');
-const {translateText} = require('./Controllers/translate');
+const {translateText, getSupportedLang} = require('./Controllers/translate');
 
 
 app.use(express.json());
@@ -39,6 +39,7 @@ app.get('/settings/get', getSettings);
 app.put('/settings/edit', editSettings);
 
 app.post(`/translate`, translateText);
+app.get('/languages', getSupportedLang);
 
 app.listen(SERVER_PORT, () =>{
     console.log(`Listening on port ${SERVER_PORT}`);

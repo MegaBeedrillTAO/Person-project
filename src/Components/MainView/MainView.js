@@ -35,7 +35,6 @@ export class MainView extends Component {
     }
 
      createReply = async () => {
-        //if (this.state.wait){
        for (let i = 0; i < builtIn.length; i++){
            if (this.state.input === builtIn[i].commandCode){
                 const translate = await Axios.post('/translate', {
@@ -44,44 +43,40 @@ export class MainView extends Component {
                 }).then(response => response.data)
             
                if (this.state.input === '!hello'){
-                let greeting = builtIn[i].content + this.props.name
+                let greeting = translate + this.props.name
                 textToSpeech(greeting);
                }
                else{
-                //    let thing = Axios.post('/translate', {
-                //     text: builtIn[i].content,
-                //     target: this.props.language
-                // })
-                //console.log(thing)
-                textToSpeech(translate);
+                    textToSpeech(translate);
                }
                
                this.setState({
-                   // reply: builtIn[i].content,
                     posts: [...this.state.posts,
                         {content: translate,
                         type: 'reply'}
                     ],
-                    input: '',
-                    wait: false
+                    input: ''
                 })
                 
                 return;
            }
            
        }
-        textToSpeech("I don't know that command");
+
+        const what = await Axios.post('/translate', {
+            text: "I don't know that command",
+            target: this.props.language
+        }).then(response => response.data)
+        textToSpeech(what);
         this.setState({
-            //reply: "I don't know that command",
             posts: [...this.state.posts,
                 {content: "I don't know that command",
                 type: 'reply'}
             ],
-            input: '',
-            wait: false
+            input: ''
         })
         
-        //}
+       
     }
 
     render() {

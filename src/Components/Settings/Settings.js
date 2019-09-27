@@ -54,12 +54,8 @@ export class Settings extends Component {
     }
 
     handleLanguage = e => {
-        if (e.target.value === ''){
-            this.setState({language: this.props.language})
-        }
-        else{
-            this.setState({language: e.target.value})
-        }
+        this.setState({language: e.target.value})
+        
     }
 
     checkColor = color => {
@@ -86,22 +82,27 @@ export class Settings extends Component {
                 <EditFields
                 function={this.handleName}
                 content={'Name:'}
+                type={'normal'}
                 />
                 <EditFields
                 function={this.handleBackgroundColor}
                 content={'Background Color:'}
+                type={'normal'}
                 />
                 <EditFields
                 function={this.handleContainerColor}
                 content={'Container Color:'}
+                type={'normal'}
                 />
                 <EditFields
                 function={this.handleChatColor}
                 content={'Chat Bubble Color:'}
+                type={'normal'}
                 />
                 <EditFields
                 function={this.handleLanguage}
                 content={'Language:'}
+                type={'drop'}
                 />
                 <button onClick={this.saveChanges}>Save</button>
             </div>
