@@ -10,6 +10,7 @@ const initialState = {
 const REGISTER_USER = 'REGISTER_USER';
 const LOGIN_USER = 'LOGIN_USER';
 const LOGOUT_USER = 'LOGOUT_USER';
+const DELETE_USER = 'DELETE_USER';
 
 
 export function registerUser(newUser) {
@@ -33,6 +34,14 @@ export function logoutUser() {
        type: LOGOUT_USER
     }
  }
+
+export function deleteUser(){
+   Axios.delete('/auth/delete')
+
+   return {
+      type: DELETE_USER
+   }
+}
 
 export default function reducer(state = initialState, action){
     const {type, payload} = action;
@@ -61,7 +70,12 @@ export default function reducer(state = initialState, action){
             username: '',
             showRedirect: false
          };
-
+         case DELETE_USER:
+            return {
+               userId: null,
+               username: '',
+               showRedirect: false
+            }
         default: return state;
     }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {editSettings} from '../../Ducks/Reducers/settingsReducer';
 import EditFields from '../MainView/Posts/EditFields';
+import DeleteAccount from './DeleteAccount';
 
 
 export class Settings extends Component {
@@ -12,7 +13,8 @@ export class Settings extends Component {
             background_color: '',
             container_color: '',
             chat_bubble_color: '',
-            language: ''
+            language: '',
+            confirmation: false
         }
     }
     
@@ -75,7 +77,9 @@ export class Settings extends Component {
             user_id: this.props.user_id
         })
     }
-
+    toggleDelete = () => {
+        this.setState({confirmation: !this.state.confirmation})
+    }
     render() {
         return (
             <div className='settings'>
@@ -105,6 +109,15 @@ export class Settings extends Component {
                 type={'drop'}
                 />
                 <button onClick={this.saveChanges}>Save</button>
+                <button onClick={this.toggleDelete}>Delete Account</button>
+                {this.state.confirmation ? 
+                    <>
+                    <DeleteAccount
+                        toggle={this.toggleDelete}
+                    />
+                    </>: null
+                }
+
             </div>
         )
     }
