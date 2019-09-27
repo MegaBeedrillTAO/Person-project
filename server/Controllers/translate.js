@@ -1,12 +1,12 @@
 const {Translate} = require('@google-cloud/translate');
 require('dotenv').config();
 
-const {PROJECT} = process.env;
+const {API_KEY} = process.env;
 const {languages} = require('./langList');
 
 
 
-const translate = new Translate({projectId});
+const translate = new Translate({key: API_KEY});
 
 module.exports = {
     translateText: async (req, res) => {
@@ -18,6 +18,7 @@ module.exports = {
             }
         }
         const [translation] = await translate.translate(text, lang);
+        
         res.status(200).json(translation);
     }
 }

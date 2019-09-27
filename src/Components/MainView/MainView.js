@@ -34,28 +34,32 @@ export class MainView extends Component {
         
     }
 
-     createReply = () => {
+     createReply = async () => {
         //if (this.state.wait){
        for (let i = 0; i < builtIn.length; i++){
            if (this.state.input === builtIn[i].commandCode){
+                const translate = await Axios.post('/translate', {
+                    text: builtIn[i].content,
+                    target: this.props.language
+                }).then(response => response.data)
+            
                if (this.state.input === '!hello'){
                 let greeting = builtIn[i].content + this.props.name
                 textToSpeech(greeting);
                }
                else{
-                textToSpeech(Axios.post('/translate', {
-                    text: builtIn[i].content,
-                    target: this.props.language
-                }).then(response => {return response.data}));
+                //    let thing = Axios.post('/translate', {
+                //     text: builtIn[i].content,
+                //     target: this.props.language
+                // })
+                //console.log(thing)
+                textToSpeech(translate);
                }
                
                this.setState({
                    // reply: builtIn[i].content,
                     posts: [...this.state.posts,
-                        {content: Axios.post('/translate', {
-                            text: builtIn[i].content,
-                            target: this.props.language
-                        }).then(response => {return response.data}),
+                        {content: translate,
                         type: 'reply'}
                     ],
                     input: '',
@@ -86,12 +90,14 @@ export class MainView extends Component {
         }
          
         const content = this.state.posts.map((el, i) => (
+            
             <Commands
                 key={i}
                 content={el.content}
                 color= {this.props.chat_bubble_color}
                 type={el.type}
             />
+            
             
         ))
         
