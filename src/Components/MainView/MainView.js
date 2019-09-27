@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 import Commands from './Posts/Commands';
-import builtIn from '../builtInCommands';
+import {builtIn, joker} from '../builtInCommands';
 import textToSpeech from './textToSpeech';
 import Axios from 'axios';
 
@@ -78,8 +78,11 @@ export class MainView extends Component {
         
        
     }
-
+    componentDidMount(){
+        console.log(joker().then(res => res.data))
+    }
     render() {
+        
         if(this.props.showRedirect) {
             this.props.getSettings();
         }
