@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {getSettings} from '../../Ducks/Reducers/settingsReducer';
 import Commands from './Posts/Commands';
-import {builtIn, joker} from '../builtInCommands';
+import {builtIn} from '../builtInCommands';
 import textToSpeech from './textToSpeech';
 import Axios from 'axios';
+import {createJoke} from '../../Ducks/Reducers/appReducer';
 
 
 
@@ -33,7 +34,13 @@ export class MainView extends Component {
         }, this.createReply)
         
     }
-
+    getTranslate = async (text, target) =>{
+       return await Axios.post('/translate', {
+            text: text,
+            target: target
+        }).then(response => response.data)
+    }
+    //const translate = getTranslate(builtIn[i].content, this.props.language)
      createReply = async () => {
        for (let i = 0; i < builtIn.length; i++){
            if (this.state.input === builtIn[i].commandCode){
@@ -76,7 +83,8 @@ export class MainView extends Component {
             input: ''
         })
         
-       
+       this.props.createJoke();
+       console.log(this.props.joke);
     }
     
     render() {
@@ -123,10 +131,13 @@ const mapStateToProps = (reduxState) => {
         background_color: reduxState.settingsReducer.background_color,
         container_color: reduxState.settingsReducer.container_color,
         chat_bubble_color: reduxState.settingsReducer.chat_bubble_color,
-        language: reduxState.settingsReducer.language
+        language: reduxState.settingsReducer.language,
+        joke: reduxState.appReducer.joke
+        
     }
 };
 
 export default connect(mapStateToProps,{
-    getSettings
+    getSettings,
+    createJoke
 })(MainView)

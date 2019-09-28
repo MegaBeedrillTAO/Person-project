@@ -1,31 +1,54 @@
-import Axios from 'axios';
+// import React, { Component } from 'react'
+// import { connect } from 'react-redux'
 
+// export class builtInCommands extends Component {
+//     constructor(){
+//         super();
+//         this.state = {
+//             commands: 
 
-export async function joker(){
+           export let builtIn = [
+                {
+                    commandCode: '!commands',
+                    content: '!joke, !weather, !hello, !introduce'
+                },
+                {
+                    commandCode: '!joke',
+                    content: "I don't have any jokes yet."
+                },
+                {
+                    commandCode: '!weather',
+                    content: 'Look outside.'
+                },
+                {
+                    commandCode: '!hello',
+                    content: 'Hello there '
+                },
+                {
+                    commandCode: '!introduce',
+                    content: 'My name is Devvie it\'s short for Dev Mountain Personal Assistant.'
+                }
+            ]
+//         }
+//     }
     
-    let joke =  await Axios.get('https://official-joke-api.appspot.com/jokes/random').then(response => response.data);
-}
+//     render() {
+        
+//         return (
+//             <div>
+                
+//             </div>
+//         )
+//     }
+// }
 
-export const builtIn = [
-    {
-        commandCode: '!commands',
-        content: '!joke, !weather, !hello, !introduce'
-    },
-    {
-        commandCode: '!joke',
-        content: "I don't have any jokes yet."
-    },
-    {
-        commandCode: '!weather',
-        content: 'Look outside.'
-    },
-    {
-        commandCode: '!hello',
-        content: 'Hello there '
-    },
-    {
-        commandCode: '!introduce',
-        content: 'My name is Devvie it\'s short for Dev Mountain Personal Assistant.'
-    }
-]
+// const mapStateToProps = (reduxState) => ({
+    
+// })
+
+// const mapDispatchToProps = {
+    
+// }
+// export const builtIn = this.state.commands;
+// export default connect(mapStateToProps, mapDispatchToProps)(builtInCommands)
 
