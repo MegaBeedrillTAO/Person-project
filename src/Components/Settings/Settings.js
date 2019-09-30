@@ -81,7 +81,7 @@ export class Settings extends Component {
     }
 
     handleZip = e => {
-        if (e.target.value === 0){
+        if (e.target.value === 0 || e.target.value === ''){
             this.setState({zipcode: this.props.zipcode})
         }
         else{

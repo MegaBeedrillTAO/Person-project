@@ -15,7 +15,9 @@ export class MainView extends Component {
         this.state = {
             posts: [{content: 'Type !commands to see all commands.', type:'reply'}],
             reply: '',
-            input: ''
+            input: '',
+            temp: '',
+            condition: ''
         }
     }
 
@@ -43,6 +45,9 @@ export class MainView extends Component {
     getJoke = async () => {
         return await Axios.get('https://official-joke-api.appspot.com/jokes/random')
         .then(response => response.data.setup + ' ' + response.data.punchline)
+    }
+    getWeather = async () =>{
+         await Axios.get('/weather').then(response => this.setState({temp: response.data.main.temp, condition: response.data.weather[0].description}))
     }
     createReply = async () => {
 
@@ -97,7 +102,9 @@ export class MainView extends Component {
                 break;
             }
             case '!weather': {
-                const translate = await this.getTranslate(builtIn[2].content, this.props.language);
+                await this.getWeather();
+                const weather = `The current temperature is ${this.state.temp} and the forecast is ${this.state.condition}.`
+                const translate = await this.getTranslate(weather, this.props.language);
                 textToSpeech(translate);
                 this.setState({
                     posts: [
