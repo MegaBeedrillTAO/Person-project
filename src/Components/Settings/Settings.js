@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import {editSettings} from '../../Ducks/Reducers/settingsReducer';
 import EditFields from '../MainView/Posts/EditFields';
 import DeleteAccount from './DeleteAccount';
+import {changePage} from '../../Ducks/Reducers/appReducer';
+
 
 
 export class Settings extends Component {
@@ -98,16 +100,20 @@ export class Settings extends Component {
         }
     }
 
-    saveChanges = () =>{
-        const {name, background_color, container_color, chat_bubble_color, language} = this.state;
+    saveChanges =  () =>{
+        const {name, background_color, container_color, chat_bubble_color, language, zipcode, country} = this.state;
         this.props.editSettings({
             name,
             background_color,
             container_color,
             chat_bubble_color,
             language,
-            user_id: this.props.user_id
-        })
+            user_id: this.props.user_id,
+            zipcode,
+            country
+        });
+        
+        
     }
     toggleDelete = () => {
         this.setState({confirmation: !this.state.confirmation})
@@ -188,5 +194,6 @@ const mapStateToProps = (reduxState) => {
 
 
 export default connect(mapStateToProps,{
-    editSettings
+    editSettings,
+    changePage
 })(Settings)

@@ -46,7 +46,7 @@ export class Login extends Component {
                     <p>Password:</p>
                     <input type='password' name='password' onChange={this.handleInput}/>
                 </section>
-                <section>
+                <section className='login-buttons'>
                     <button onClick={this.handleLogin}>Login</button>
                     <button onClick={this.handleRegister}>Register</button>
                 </section>

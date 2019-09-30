@@ -49,6 +49,9 @@ export class MainView extends Component {
     getWeather = async () =>{
          await Axios.get('/weather').then(response => this.setState({temp: response.data.main.temp, condition: response.data.weather[0].description}))
     }
+    getCurrentSettings = async () =>{
+        return await Axios.get('/settings/current').then(response => response.data);
+    }
     createReply = async () => {
 
         switch(this.state.input){
@@ -105,6 +108,20 @@ export class MainView extends Component {
                 await this.getWeather();
                 const weather = `The current temperature is ${this.state.temp} and the forecast is ${this.state.condition}.`
                 const translate = await this.getTranslate(weather, this.props.language);
+                textToSpeech(translate);
+                this.setState({
+                    posts: [
+                        ...this.state.posts,
+                        {content: translate, type: 'reply'}
+                    ],
+                    input: ''
+                })
+                break;
+            }
+            case '!settings': {
+                const settings = await this.getCurrentSettings();
+                const content = `Your settings: username is ${settings.username}, name you wish to be addressed by is ${settings.name}, your colors are ${settings.background_color}, ${settings.container_color}, and ${settings.chat_bubble_color}. Location is ${settings.zipcode}, ${settings.country}.`;
+                const translate = await this.getTranslate(content, this.props.language);
                 textToSpeech(translate);
                 this.setState({
                     posts: [

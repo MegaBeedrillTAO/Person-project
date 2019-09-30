@@ -24,8 +24,7 @@
         
     }
     main{
-        @include flexStuff(space-evenly, row);
-        @include headerVal(); 
+        @extend section;
         padding-right: 80px;
         button{
             font-size: 30px;

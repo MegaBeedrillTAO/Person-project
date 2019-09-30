@@ -3,11 +3,19 @@
     height: 100%;
     position: absolute;
     top: 0px;
-    background-color: rgba(110, 108, 108, 0.699);
+    background-color: rgba(110, 108, 108, 0.856);
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
     @include flexStuff(center, column);
     section {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        width: 100vw;
+        button{
+            width: 70px;
+            height: 30px;
+        }
     }
 }

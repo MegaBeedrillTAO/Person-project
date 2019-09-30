@@ -46,7 +46,7 @@
   font-size: 20px;
 }
 
-.header section {
+.header section, .header main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,21 +66,6 @@
 }
 
 .header main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100vw;
-  height: 10%;
   padding-right: 80px;
 }
 
@@ -108,9 +93,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-weight: bold;
 }
 
-.login section {
+.login input {
+  width: 150%;
+}
+
+.login section, .login .header main, .header .login main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,6 +114,29 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.login .login-buttons {
+  width: 100vw;
+  height: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login .login-buttons button {
+  width: 70px;
+  height: 30px;
 }
 
 .mainView {
@@ -245,7 +258,10 @@
   height: 100%;
   position: absolute;
   top: 0px;
-  background-color: rgba(110, 108, 108, 0.699);
+  background-color: rgba(110, 108, 108, 0.856);
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -261,7 +277,7 @@
           align-items: center;
 }
 
-.delete-account section {
+.delete-account section, .delete-account .header main, .header .delete-account main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -272,5 +288,11 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  width: 100vw;
+}
+
+.delete-account section button, .delete-account .header main button, .header .delete-account main button {
+  width: 70px;
+  height: 30px;
 }
 /*# sourceMappingURL=root.css.map */

@@ -5,7 +5,20 @@
     background-color: $backgroundColor;
     @include borderStyle();
     @include flexStuff(space-evenly, column);
+    font-weight: bold;
+    input{
+        width: 150%;
+    }
     section{
         @include flexStuff(center, column); 
+    }
+    .login-buttons{
+        width: 100vw;
+        height: 20vh;
+        @include flexStuff(space-evenly, column);
+        button{
+            width: 70px;
+            height: 30px;
+        }
     }
 }

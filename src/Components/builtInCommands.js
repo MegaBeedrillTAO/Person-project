@@ -10,7 +10,7 @@
            export let builtIn = [
                 {
                     commandCode: '!commands',
-                    content: '!joke, !weather, !hello, !introduce'
+                    content: '!joke, !weather, !hello, !introduce, !settings'
                 },
                 {
                     commandCode: '!joke',
