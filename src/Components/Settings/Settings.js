@@ -14,7 +14,9 @@ export class Settings extends Component {
             container_color: '',
             chat_bubble_color: '',
             language: '',
-            confirmation: false
+            confirmation: false,
+            zipcode: 0,
+            country: ''
         }
     }
 
@@ -24,7 +26,9 @@ export class Settings extends Component {
             background_color: this.props.background_color,
             container_color: this.props.container_color,
             chat_bubble_color: this.props.chat_bubble_color,
-            language: this.props.language
+            language: this.props.language,
+            zipcode: this.props.zipcode,
+            country: this.props.country
         })
     }
     
@@ -76,6 +80,24 @@ export class Settings extends Component {
         return s.color === color;
     }
 
+    handleZip = e => {
+        if (e.target.value === 0){
+            this.setState({zipcode: this.props.zipcode})
+        }
+        else{
+            this.setState({zipcode: e.target.value})
+        }
+    }
+
+    handleCountry = e => {
+        if (e.target.value === ''){
+            this.setState({country: this.props.country})
+        }
+        else{
+            this.setState({country: e.target.value})
+        }
+    }
+
     saveChanges = () =>{
         const {name, background_color, container_color, chat_bubble_color, language} = this.state;
         this.props.editSettings({
@@ -97,26 +119,43 @@ export class Settings extends Component {
                 function={this.handleName}
                 content={'Name:'}
                 type={'normal'}
+                inputType={'text'}
                 />
                 <EditFields
                 function={this.handleBackgroundColor}
                 content={'Background Color:'}
                 type={'normal'}
+                inputType={'text'}
                 />
                 <EditFields
                 function={this.handleContainerColor}
                 content={'Container Color:'}
                 type={'normal'}
+                inputType={'text'}
                 />
                 <EditFields
                 function={this.handleChatColor}
                 content={'Chat Bubble Color:'}
                 type={'normal'}
+                inputType={'text'}
+                />
+                <EditFields
+                function={this.handleZip}
+                content={'Zipcode'}
+                type={'normal'}
+                inputType={'number'}
+                />
+                <EditFields
+                function={this.handleCountry}
+                content={'Country'}
+                type={'normal'}
+                inputType={'text'}
                 />
                 <EditFields
                 function={this.handleLanguage}
                 content={'Language:'}
                 type={'drop'}
+                inputType={'text'}
                 />
                 <button onClick={this.saveChanges}>Save</button>
                 <button onClick={this.toggleDelete}>Delete Account</button>
@@ -140,7 +179,9 @@ const mapStateToProps = (reduxState) => {
         container_color: reduxState.settingsReducer.container_color,
         chat_bubble_color: reduxState.settingsReducer.chat_bubble_color,
         language: reduxState.settingsReducer.language,
-        user_id: reduxState.userReducer.user_id
+        user_id: reduxState.userReducer.user_id,
+        zipcode: reduxState.settingsReducer.zipcode,
+        country: reduxState.settingsReducer.country
     } 
 }
 

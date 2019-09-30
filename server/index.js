@@ -8,6 +8,7 @@ const {login, logout, register,deleteUser} = require('./Controllers/authControll
 const {addCommand} = require('./Controllers/commandController');
 const {editSettings, getSettings} = require('./Controllers/settingController');
 const {translateText, getSupportedLang} = require('./Controllers/translate');
+const {getWeather} = require('./Controllers/weatherController');
 
 
 app.use(express.json());
@@ -41,7 +42,7 @@ app.put('/settings/edit', editSettings);
 app.post(`/translate`, translateText);
 app.get('/languages', getSupportedLang);
 
-
+app.get('/weather', getWeather);
 
 app.listen(SERVER_PORT, () =>{
     console.log(`Listening on port ${SERVER_PORT}`);

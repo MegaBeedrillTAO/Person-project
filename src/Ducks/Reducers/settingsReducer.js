@@ -6,7 +6,9 @@ const initialState = {
     background_color: '',
     container_color: '',
     chat_bubble_color: '',
-    language: ''
+    language: '',
+    zipcode: 0,
+    country: ''
 }
 
 const GET_SETTINGS = 'GET_SETTINGS';
@@ -38,7 +40,9 @@ export default function reducer(state = initialState, action){
                 background_color: payload.data.background_color,
                 container_color: payload.data.container_color,
                 chat_bubble_color: payload.data.chat_bubble_color,
-                language: payload.data.language
+                language: payload.data.language,
+                zipcode: payload.data.zipcode,
+                country: payload.data.country
             };
         case `${EDIT_SETTINGS}_FULFILLED`:
             return{
@@ -46,7 +50,9 @@ export default function reducer(state = initialState, action){
                 background_color: payload.data.background_color,
                 container_color: payload.data.container_color,
                 chat_bubble_color: payload.data.chat_bubble_color,
-                language: payload.data.language
+                language: payload.data.language,
+                zipcode: payload.data.zipcode,
+                country: payload.data.country
             }
         
 
