@@ -120,7 +120,7 @@ export class MainView extends Component {
             }
             case '!settings': {
                 const settings = await this.getCurrentSettings();
-                const content = `Your settings: username is ${settings.username}, name you wish to be addressed by is ${settings.name}, your colors are ${settings.background_color}, ${settings.container_color}, and ${settings.chat_bubble_color}. Location is ${settings.zipcode}, ${settings.country}.`;
+                let content = `Your settings: username is ${settings.username}, name you wish to be addressed by is ${settings.name}, your colors are ${settings.background_color}, ${settings.container_color}, and ${settings.chat_bubble_color}. Location is ${settings.zipcode}, ${settings.country}.`;
                 const translate = await this.getTranslate(content, this.props.language);
                 textToSpeech(translate);
                 this.setState({

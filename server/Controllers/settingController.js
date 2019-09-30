@@ -38,16 +38,17 @@ async function getCurrentSettings(req,res){
     const{user_id} = req.session.user;
     const currentSettings = await db.setting.getCurrentSettings(user_id);
     req.session.current  ={
-        username: currentSettings.username,
-        name: currentSettings.name,
-        background_color: currentSettings.background_color,
-        container_color: currentSettings.container_color,
-        chat_bubble_color: currentSettings.chat_bubble_color,
-        language: currentSettings.language,
-        zipcode: currentSettings.zipcode,
-        country: currentSettings.country
+        username: currentSettings[0].username,
+        name: currentSettings[0].name,
+        background_color: currentSettings[0].background_color,
+        container_color: currentSettings[0].container_color,
+        chat_bubble_color: currentSettings[0].chat_bubble_color,
+        language: currentSettings[0].language,
+        zipcode: currentSettings[0].zipcode,
+        country: currentSettings[0].country
 
     }
+    res.status(200).json(req.session.current);
 }
 
 module.exports = {
