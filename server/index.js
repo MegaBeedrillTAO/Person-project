@@ -41,6 +41,8 @@ app.put('/settings/edit', editSettings);
 app.post(`/translate`, translateText);
 app.get('/languages', getSupportedLang);
 
+
+
 app.listen(SERVER_PORT, () =>{
     console.log(`Listening on port ${SERVER_PORT}`);
 })

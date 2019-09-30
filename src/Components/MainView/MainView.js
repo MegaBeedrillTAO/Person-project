@@ -5,7 +5,7 @@ import Commands from './Posts/Commands';
 import {builtIn} from '../builtInCommands';
 import textToSpeech from './textToSpeech';
 import Axios from 'axios';
-import {createJoke} from '../../Ducks/Reducers/appReducer';
+
 
 
 
@@ -40,52 +40,88 @@ export class MainView extends Component {
             target: target
         }).then(response => response.data)
     }
-    //const translate = getTranslate(builtIn[i].content, this.props.language)
-     createReply = async () => {
-       for (let i = 0; i < builtIn.length; i++){
-           if (this.state.input === builtIn[i].commandCode){
-                const translate = await Axios.post('/translate', {
-                    text: builtIn[i].content,
-                    target: this.props.language
-                }).then(response => response.data)
-            
-               if (this.state.input === '!hello'){
-                let greeting = translate + this.props.name
-                textToSpeech(greeting);
-               }
-               else{
-                    textToSpeech(translate);
-               }
-               
-               this.setState({
-                    posts: [...this.state.posts,
-                        {content: translate,
-                        type: 'reply'}
+    getJoke = async () => {
+        return await Axios.get('https://official-joke-api.appspot.com/jokes/random')
+        .then(response => response.data.setup + ' ' + response.data.punchline)
+    }
+    createReply = async () => {
+
+        switch(this.state.input){
+            case '!hello':{
+                let greeting = builtIn[3].content + this.props.name;
+                const translate = await this.getTranslate(greeting, this.props.language);
+                textToSpeech(translate);
+                this.setState({
+                    posts: [
+                        ...this.state.posts,
+                        {content: translate, type: 'reply'}
                     ],
                     input: ''
                 })
-                
-                return;
-           }
-           
-       }
+                break;
+            }
+            case '!joke':{
+                let joke = await this.getJoke();
+                const translate = await this.getTranslate(joke, this.props.language);
+                textToSpeech(translate);
+                this.setState({
+                    posts: [
+                        ...this.state.posts,
+                        {content: translate, type: 'reply'}
+                    ],
+                    input: ''
+                })
+                break;
+            }
+            case '!commands':{
+                textToSpeech(builtIn[0].content);
+                this.setState({
+                    posts: [
+                        ...this.state.posts,
+                        {content: builtIn[0].content, type: 'reply'}
+                    ],
+                    input: ''
+                })
+                break;
+            }
+            case '!introduce': {
+                const translate = await this.getTranslate(builtIn[4].content, this.props.language);
+                textToSpeech(translate);
+                this.setState({
+                    posts: [
+                        ...this.state.posts,
+                        {content: translate, type: 'reply'}
+                    ],
+                    input: ''
+                })
+                break;
+            }
+            case '!weather': {
+                const translate = await this.getTranslate(builtIn[2].content, this.props.language);
+                textToSpeech(translate);
+                this.setState({
+                    posts: [
+                        ...this.state.posts,
+                        {content: translate, type: 'reply'}
+                    ],
+                    input: ''
+                })
+                break;
+            }
+            
+            default:
+                const translate = await this.getTranslate("I don't know that command", this.props.language);
+                textToSpeech(translate);
+                this.setState({
+                    posts: [
+                        ...this.state.posts,
+                        {content: translate, type: 'reply'}
+                    ],
+                    input: ''
+                })
 
-        const what = await Axios.post('/translate', {
-            text: "I don't know that command",
-            target: this.props.language
-        }).then(response => response.data)
-        textToSpeech(what);
-        this.setState({
-            posts: [...this.state.posts,
-                {content: "I don't know that command",
-                type: 'reply'}
-            ],
-            input: ''
-        })
-        
-       this.props.createJoke();
-       console.log(this.props.joke);
-    }
+        }
+  }
     
     render() {
         
@@ -131,13 +167,11 @@ const mapStateToProps = (reduxState) => {
         background_color: reduxState.settingsReducer.background_color,
         container_color: reduxState.settingsReducer.container_color,
         chat_bubble_color: reduxState.settingsReducer.chat_bubble_color,
-        language: reduxState.settingsReducer.language,
-        joke: reduxState.appReducer.joke
+        language: reduxState.settingsReducer.language
         
     }
 };
 
 export default connect(mapStateToProps,{
-    getSettings,
-    createJoke
+    getSettings
 })(MainView)

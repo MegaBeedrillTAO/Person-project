@@ -1,13 +1,12 @@
-import Axios from 'axios';
+
 
 const initialState = {
     currentPage: '/',
-    userCommands: [],
-    joke: ''
+    userCommands: []
 }
 
 const CHANGE_PAGE = 'CHANGE_PAGE';
-const CREATE_JOKE = 'CREATE_JOKE';
+
 
 export function changePage(page){
     return {
@@ -16,12 +15,7 @@ export function changePage(page){
     }
 }
 
-export function createJoke(){
-    return {
-        type: CREATE_JOKE,
-        payload: Axios.get('https://official-joke-api.appspot.com/jokes/random')
-    }
-}
+
 
 export default function reducer(state = initialState, action){
     const {type, payload} = action;
@@ -30,11 +24,6 @@ export default function reducer(state = initialState, action){
             return{
                 ...state,
                 currentPage: payload
-            }
-        case CREATE_JOKE:
-            return {
-                ...state,
-                joke: payload.data.setup + '' + payload.data.punchline
             }
         default: return state;
     }
