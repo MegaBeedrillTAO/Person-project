@@ -12,12 +12,24 @@
     top: 0px;
     @include borderStyle();
     @include headerVal();
+    button{
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+    }
     section{
-        @include flexStuff(center, row);
+        @include flexStuff(space-evenly, row);
         @include headerVal();
+        padding-right: 35px;
+        
     }
     main{
-        @include flexStuff(center, row);
+        @include flexStuff(space-evenly, row);
         @include headerVal(); 
+        padding-right: 80px;
+        button{
+            font-size: 30px;
+        }
     }
+    
 }

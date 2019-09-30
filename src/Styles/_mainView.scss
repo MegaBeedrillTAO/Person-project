@@ -13,6 +13,7 @@
         overflow-y: scroll;
         
     }
+    
     .inputArea{
         @include flexStuff(center, row);
         button{

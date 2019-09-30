@@ -13,7 +13,7 @@ export class MainView extends Component {
     constructor(){
         super();
         this.state = {
-            posts: [],
+            posts: [{content: 'Type !commands to see all commands.', type:'reply'}],
             reply: '',
             input: ''
         }
@@ -145,14 +145,18 @@ export class MainView extends Component {
 
             <div className='mainView'>
                <main>
+                   
                     <section className='display' style={{border: `20px ${this.props.container_color} solid`, backgroundColor: `${this.props.background_color}` }} >
                         {content}
                     </section>
+                   
+                    
                     <section className='inputArea'>
                         <input onChange={this.handleInput} value={this.state.input}/>
                         <button onClick={this.submitCommand}>Submit</button>
                         
                     </section>
+                    
                </main>
                 
             </div>
