@@ -22,3 +22,49 @@
         }
     }
 }
+
+@media (min-width: 500px){
+    .login{
+        
+        .user{
+            @include flexStuff(space-evenly, row);
+            width:100vw;
+        }
+        input{
+            width: 70%;
+        }
+        .login-buttons{
+            height: 30vh;
+            .login-button {
+                
+                width: 140px;
+                height: 60px;
+            }
+        }
+    }
+    
+    
+}
+
+@media (min-width: 800px){
+    .login{
+        width: 60vw;
+        .user{
+            @include flexStuff(space-evenly, row);
+            width:60vw;
+        }
+        input{
+            width: 70%;
+        }
+        .login-buttons{
+            height: 30vh;
+            width: 40vw;
+            @include flexStuff(space-around, row);
+            .login-button {
+                
+                width: 140px;
+                height: 60px;
+            }
+        }
+    }
+}

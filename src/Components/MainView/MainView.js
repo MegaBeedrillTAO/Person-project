@@ -106,7 +106,7 @@ export class MainView extends Component {
             }
             case '!weather': {
                 await this.getWeather();
-                const weather = `The current temperature is ${this.state.temp} and the forecast is ${this.state.condition}.`
+                const weather = `The current temperature is ${this.state.temp} degrees and the forecast is ${this.state.condition}.`
                 const translate = await this.getTranslate(weather, this.props.language);
                 textToSpeech(translate);
                 this.setState({

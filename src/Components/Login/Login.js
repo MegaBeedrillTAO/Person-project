@@ -38,17 +38,17 @@ export class Login extends Component {
         }
         return (
             <div className = 'login'>
-                <section>
+                <section className='user'>
                     <p>Username:</p>
                     <input name='username' onChange={this.handleInput}/>
                 </section>
-                <section>
+                <section className='user'>
                     <p>Password:</p>
                     <input type='password' name='password' onChange={this.handleInput}/>
                 </section>
                 <section className='login-buttons'>
-                    <button onClick={this.handleLogin}>Login</button>
-                    <button onClick={this.handleRegister}>Register</button>
+                    <button className='login-button' onClick={this.handleLogin}>Login</button>
+                    <button className='login-button' onClick={this.handleRegister}>Register</button>
                 </section>
             </div>
         )
