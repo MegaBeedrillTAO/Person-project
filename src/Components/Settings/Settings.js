@@ -154,7 +154,7 @@ export class Settings extends Component {
                 <EditFields
                 function={this.handleCountry}
                 content={'Country'}
-                type={'normal'}
+                type={'countries'}
                 inputType={'text'}
                 />
                 <EditFields

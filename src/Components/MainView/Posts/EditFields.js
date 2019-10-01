@@ -5,12 +5,14 @@ class EditFields extends React.Component {
    constructor(){
        super();
        this.state = {
-           langs: []
+           langs: [],
+           countries: []
        }
    }
    
    componentDidMount(){
-        Axios.get('/languages').then(response => this.setState({langs: response.data[0]}))
+        Axios.get('/languages').then(response => this.setState({langs: response.data[0]}));
+        Axios.get('/countries').then(response => this.setState({countries: response.data}));
        
    }
    
@@ -34,6 +36,19 @@ class EditFields extends React.Component {
                 
                 </select>
                  :
+                this.props.type === 'countries' ?
+                <select style={{ margin: '1rem 0' }} onChange={this.props.function}>
+    
+                <option>
+                    Select a Country
+                </option>
+                
+                {this.state.countries.map((country,i) => (
+                <option key={i} value={country.alpha2Code.toLowerCase()} >{country.name} </option>
+               ))}
+                
+                </select>:
+
                 null
                 }
                 
