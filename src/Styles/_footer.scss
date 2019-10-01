@@ -1,0 +1,8 @@
+.footer{
+    background-color: $backgroundColor;
+    position: fixed;
+    bottom: 0px;
+    height: 10vh;
+    width: 100vw;
+    @include borderStyle();
+}

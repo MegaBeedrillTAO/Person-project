@@ -147,7 +147,7 @@ export class Settings extends Component {
                 />
                 <EditFields
                 function={this.handleZip}
-                content={'Zipcode'}
+                content={'Zipcode:'}
                 type={'normal'}
                 inputType={'number'}
                 />

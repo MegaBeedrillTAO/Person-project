@@ -242,9 +242,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -294,5 +294,37 @@
 .delete-account section button, .delete-account .header main button, .header .delete-account main button {
   width: 70px;
   height: 30px;
+}
+
+.footer {
+  background-color: #2fdada;
+  position: fixed;
+  bottom: 0px;
+  height: 10vh;
+  width: 100vw;
+  border: solid black 3px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.editFields .edit-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 95vw;
+}
+
+.editFields .edit-input input {
+  width: 60%;
 }
 /*# sourceMappingURL=root.css.map */
