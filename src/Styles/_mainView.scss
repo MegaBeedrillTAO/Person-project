@@ -5,13 +5,13 @@
     .display{
         // @include flexStuff(flex-end, column); 
         box-sizing: border-box;
-        height: 60vh;
-        width: 100vw;
+        height: 90vh;
+        width: 98vw;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         overflow-y: scroll;
-        
+        margin-top: 40px;
     }
     
     .inputArea{
@@ -20,7 +20,7 @@
             border-radius: 20px;
         }
         input{
-            width: 80%;
+            width: 90%;
         }
     }
     
