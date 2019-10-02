@@ -1,5 +1,10 @@
 const bcrypt = require('bcryptjs');
 
+function getUser(req, res){
+   if (req.session.user) {
+      res.status(200).json(req.session.user);
+   }
+}
 
 async function login(req, res){
     const {username, password} = req.body;
@@ -80,5 +85,6 @@ module.exports = {
     login,
     logout,
     register,
-    deleteUser
+    deleteUser,
+    getUser
 }

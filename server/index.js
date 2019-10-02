@@ -4,7 +4,7 @@ const app = express();
 const massive = require('massive');
 const session = require('express-session');
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
-const {login, logout, register,deleteUser} = require('./Controllers/authController');
+const {login, logout, register,deleteUser, getUser} = require('./Controllers/authController');
 const {addCommand} = require('./Controllers/commandController');
 const {editSettings, getSettings, getCurrentSettings} = require('./Controllers/settingController');
 const {translateText, getSupportedLang} = require('./Controllers/translate');
@@ -28,7 +28,7 @@ app.use(session({
     }
 })) 
 
-
+app.get('/auth/user', getUser);
 app.post('/auth/login', login);
 app.post('/auth/logout', logout);
 app.post('/auth/register', register);
