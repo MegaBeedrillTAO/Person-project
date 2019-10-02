@@ -163,8 +163,10 @@ export class Settings extends Component {
                 type={'drop'}
                 inputType={'text'}
                 />
+                <div className='settings-buttons'>
                 <button onClick={this.saveChanges}>Save</button>
                 <button onClick={this.toggleDelete}>Delete Account</button>
+                </div>
                 {this.state.confirmation ? 
                     <>
                     <DeleteAccount

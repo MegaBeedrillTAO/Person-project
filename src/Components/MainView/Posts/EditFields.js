@@ -24,7 +24,7 @@ class EditFields extends React.Component {
                 <input  onChange={this.props.function} type={this.props.inputType}/> </div> :
                 this.props.type === 'drop' ?
                 
-                <select style={{ margin: '1rem 0' }} onChange={this.props.function}>
+                <select onChange={this.props.function} className='drop'>
     
                 <option>
                     Select a language
@@ -37,7 +37,7 @@ class EditFields extends React.Component {
                 </select>
                  :
                 this.props.type === 'countries' ?
-                <select style={{ margin: '1rem 0' }} onChange={this.props.function}>
+                <select  onChange={this.props.function} className='drop'>
     
                 <option>
                     Select a Country

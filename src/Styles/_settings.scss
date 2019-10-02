@@ -6,3 +6,20 @@
     align-items: flex-start;
     
 }
+
+@media(min-width: 800px){
+    .settings{
+        height: 80vh;
+        font-size: 25px;
+        .settings-buttons{
+            @include flexStuff(space-evenly, row);
+            width: 40vw;
+            margin-left: 400px;
+            button{
+                height: 60px;
+                width: 100px;
+                font-size: 20px;
+            }
+        }
+    }
+}

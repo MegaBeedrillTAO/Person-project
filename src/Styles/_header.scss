@@ -32,3 +32,33 @@
     }
     
 }
+
+@media(min-width: 500px){
+    .header{
+        main{
+            padding-right: 0px;
+            justify-content: center;
+            
+            button{
+                font-size: 60px;
+                position: fixed;
+                left: 0px;
+                top: -7px;
+            }
+        }
+    }
+}
+
+@media(min-width: 800px){
+    .header{
+        main{
+            h2{
+                font-size: 55px;
+            }
+            button{
+                font-size: 90px;
+                top: -30px;
+            }
+        }
+    }
+}

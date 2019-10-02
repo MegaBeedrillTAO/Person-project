@@ -9,5 +9,22 @@
         input{
             width: 60%;
         }
+        .drop{
+            margin: 1rem 0;
+        }
+    }
+}
+
+@media(min-width: 800px){
+    .editFields{
+        .edit-input{
+            justify-content: space-evenly;
+        }
+        .drop{
+            font-size: 20px;
+            margin-left: 150px;
+            height: 40px;
+            width: 400px;
+        }
     }
 }
