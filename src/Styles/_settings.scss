@@ -4,7 +4,10 @@
     @include flexStuff(space-evenly, column);
     
     align-items: flex-start;
-    
+    .settings-buttons{
+        @include flexStuff(space-evenly, column);
+        align-items: flex-start;
+    }
 }
 
 @media(min-width: 800px){
