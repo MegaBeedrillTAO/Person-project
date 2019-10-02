@@ -17,8 +17,14 @@ export class MainView extends Component {
             reply: '',
             input: '',
             temp: '',
-            condition: ''
+            condition: '',
+            joke: ''
         }
+    }
+
+    componentDidMount () {
+       Axios.get('https://official-joke-api.appspot.com/jokes/random')
+       .then(response => this.setState({joke: response.data.setup + ' ' + response.data.punchline}))
     }
 
     handleInput = (e) => {
@@ -168,6 +174,17 @@ export class MainView extends Component {
         return (
 
             <div className='mainView'>
+                <div className='left-side'>
+                    <h2>Command Descriptions</h2>
+                    <ul>
+                        <li>!commands: Gives a list of all commands.</li>
+                        <li>!hello: Greets you with the name you wish to be addressed by.</li>
+                        <li>!introduce: The app introduces itself.</li>
+                        <li>!joke: The app tells a joke.</li>
+                        <li>!weather: Gives the weather based on current location settings.</li>
+                        <li>!settings: Lists you current settings.</li>
+                    </ul>
+                </div>
                <main>
                    
                     <section className='display' style={{border: `20px ${this.props.container_color} solid`, backgroundColor: `${this.props.background_color}` }} >
@@ -182,7 +199,16 @@ export class MainView extends Component {
                     </section>
                     
                </main>
-                
+                <div className='right-side'>
+                    <p>
+                    Welcome, {this.props.name}. My commands are listed to the side or you can type !commands to see the list in my display.
+                    I hope your experience with me is an enjoyable one. 
+                    </p>
+                    <p>
+                        Here is a joke to start things off: 
+                    </p>
+                    {this.state.joke}
+                </div>
             </div>
         )
     }

@@ -1,5 +1,5 @@
 .mainView{
-    @include flexStuff(center, column);
+    @include flexStuff(space-between, row);
     width: 100vw;
     height: 100vh;
     .display{
@@ -10,7 +10,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        overflow-y: scroll;
+        overflow-y: hidden;
         margin-top: 40px;
     }
     
@@ -21,6 +21,56 @@
         }
         input{
             width: 90%;
+        }
+    }
+    .left-side{
+        height: 70vh;
+        display: none;
+        h2{
+            text-align: center;
+        }
+        ul{
+            height: 60vh;
+            @include flexStuff(space-evenly, column);
+            align-items: flex-start;
+            font-weight: bold;
+            
+        }
+    }
+    .right-side{
+        height: 70vh;
+        width: 30vw;
+        text-align: center;
+        font-weight: bold;
+        display: none;
+    }
+    
+}
+
+@media(min-width: 500px){
+    .mainView{
+        .display{
+            height: 70vh;
+            margin-top: 0px;
+        }
+    }
+}
+
+@media(min-width: 800px){
+    .mainView{
+        .display{
+            width: 45vw;
+        }
+        .inputArea{
+            input{
+                width: 92%;
+            }
+        }
+        .left-side{
+            display: block;
+        }
+        .right-side{
+            @include flexStuff(space-evenly, column);
         }
     }
     

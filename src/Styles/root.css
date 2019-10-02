@@ -86,6 +86,12 @@
     left: 0px;
     top: -7px;
   }
+  .header section button, .header main button {
+    font-size: 35px;
+  }
+  .header section h2, .header main h2 {
+    font-size: 40px;
+  }
 }
 
 @media (min-width: 800px) {
@@ -242,13 +248,13 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -271,7 +277,7 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  overflow-y: scroll;
+  overflow-y: hidden;
   margin-top: 40px;
 }
 
@@ -297,6 +303,78 @@
 
 .mainView .inputArea input {
   width: 90%;
+}
+
+.mainView .left-side {
+  height: 70vh;
+  display: none;
+}
+
+.mainView .left-side h2 {
+  text-align: center;
+}
+
+.mainView .left-side ul {
+  height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  font-weight: bold;
+}
+
+.mainView .right-side {
+  height: 70vh;
+  width: 30vw;
+  text-align: center;
+  font-weight: bold;
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .mainView .display {
+    height: 70vh;
+    margin-top: 0px;
+  }
+}
+
+@media (min-width: 800px) {
+  .mainView .display {
+    width: 45vw;
+  }
+  .mainView .inputArea input {
+    width: 92%;
+  }
+  .mainView .left-side {
+    display: block;
+  }
+  .mainView .right-side {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 .command {
@@ -330,6 +408,13 @@
       -ms-flex-align: center;
           align-items: center;
   font-weight: bold;
+}
+
+@media (min-width: 800px) {
+  .command {
+    width: 100px;
+    padding-left: 50px;
+  }
 }
 
 .settings {

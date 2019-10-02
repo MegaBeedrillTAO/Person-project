@@ -22,3 +22,10 @@
     align-items: center;
     font-weight: bold;
 }
+
+@media(min-width: 800px){
+    .command{
+        width: 100px;
+        padding-left: 50px;
+    }
+}
