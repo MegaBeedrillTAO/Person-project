@@ -5,4 +5,5 @@
     height: 10vh; 
     width: 100vw;
     @include borderStyle();
+    z-index: 0;
 }

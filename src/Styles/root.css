@@ -402,9 +402,10 @@
 }
 
 .delete-account {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
+  z-index: 1;
   top: 0px;
   background-color: rgba(110, 108, 108, 0.856);
   font-weight: bold;
@@ -442,6 +443,23 @@
 .delete-account section button, .delete-account .header main button, .header .delete-account main button {
   width: 70px;
   height: 30px;
+}
+
+@media (min-width: 800px) {
+  .delete-account main {
+    font-size: 40px;
+  }
+  .delete-account section, .delete-account .header main, .header .delete-account main {
+    width: 50vw;
+  }
+  .delete-account section button, .delete-account .header main button, .header .delete-account main button {
+    width: 100px;
+    height: 60px;
+  }
+}
+
+.editFields {
+  font-weight: bold;
 }
 
 .editFields .edit-input {
@@ -493,6 +511,7 @@
     border: solid black 3px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+    z-index: 0;
   }
 }
 /*# sourceMappingURL=root.css.map */
