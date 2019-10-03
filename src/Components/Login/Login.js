@@ -23,17 +23,18 @@ export class Login extends Component {
     handleLogin = () => {
         const{username, password} = this.state;
         this.props.loginUser({username, password});
-        this.props.changePage('/Main');
+        //this.props.changePage('/Main');
     }
 
     handleRegister = () => {
         const{username, password} = this.state;
         this.props.registerUser({username, password});
-        this.props.changePage('/Main');
+        //this.props.changePage('/Main');
     }
     
     render() {
         if(this.props.user_id && this.props.showRedirect){
+            this.props.changePage('/Main')
            return <Redirect to='/Main'/>
         }
         return (

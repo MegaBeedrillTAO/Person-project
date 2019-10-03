@@ -13,6 +13,8 @@ const LOGOUT_USER = 'LOGOUT_USER';
 const DELETE_USER = 'DELETE_USER';
 
 
+
+
 export function registerUser(newUser) {
     return {
        type: REGISTER_USER,

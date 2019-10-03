@@ -5,6 +5,8 @@ import {logoutUser} from '../../Ducks/Reducers/userReducer';
 import {changePage} from '../../Ducks/Reducers/appReducer';
 
 export class Header extends Component {
+  
+
     goToSettings = () =>{
         this.props.changePage('/Settings');
     }
